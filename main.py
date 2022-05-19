@@ -61,7 +61,6 @@ def coffee_machine():
             return
         elif coffee_choice == "report":
             print(f'Water: {resources["water"]}ml\nMilk: {resources["milk"]}ml\nCoffee: {resources["coffee"]}g\nMoney: ${profitz}')
-
         elif check_resources(coffee_choice) is True:
             for i in resources:
                 resources[i] -= MENU[coffee_choice]["ingredients"][i]
@@ -78,7 +77,10 @@ def coffee_machine():
                 print(f"Here is your {coffee_choice} ☕, Enjoy!")
             else:
                 print("Sorry that's not enough money. Money refunded.")
-
+        elif check_resources(coffee_choice) is False:
+            caffeine_addiction = False
+            print("Sorry, out of stock.")
+            # TODO: Improve out of stock code
 
 coffee_machine()
 "\n"
